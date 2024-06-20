@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
 import morgan from 'morgan'
+import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 import { prisma } from './app/prisma.js'
 
 dotenv.config()
@@ -15,6 +16,8 @@ async function main() {
 
 	app.use(cors())
 	app.use(express.json())
+
+	app.use(notFound, errorHandler)
 
 	app.listen(PORT, () =>
 		console.log(
