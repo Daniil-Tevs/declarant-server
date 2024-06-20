@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Daniil-Tevs/declarant-server/issues"
   },
-  "homepage": "https://github.com/Daniil-Tevs/declarant-server#readme"
+  "homepage": "https://github.com/Daniil-Tevs/declarant-server#readme",
+  "dependencies": {
+    "@prisma/client": "^5.15.1"
+  }
 }
