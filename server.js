@@ -4,6 +4,8 @@ import dotenv from 'dotenv'
 import express from 'express'
 import morgan from 'morgan'
 import { errorHandler, notFound } from './app/middleware/error.middleware.js'
+
+import pageRoute from './app/page/page.routes.js'
 import { prisma } from './app/prisma.js'
 
 dotenv.config()
@@ -16,6 +18,8 @@ async function main() {
 
 	app.use(cors())
 	app.use(express.json())
+
+	app.use('/api/page', pageRoute)
 
 	app.use(notFound, errorHandler)
 
