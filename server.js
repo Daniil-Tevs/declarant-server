@@ -6,6 +6,8 @@ import morgan from 'morgan'
 import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 
 import pageRoute from './app/page/page.routes.js'
+
+import appointmentRoute from './app/appointment/appointment.routes.js'
 import { prisma } from './app/prisma.js'
 
 dotenv.config()
@@ -20,6 +22,7 @@ async function main() {
 	app.use(express.json())
 
 	app.use('/api/page', pageRoute)
+	app.use('/api/appointment', appointmentRoute)
 
 	app.use(notFound, errorHandler)
 
