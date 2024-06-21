@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id       Int    @id @default(autoincrement())
+  login    String @db.VarChar(512)
+  password String @db.VarChar(512)
+}
+
+model appointment {
+  id       Int       @id @default(autoincrement())
+  activity Boolean   @default(dbgenerated("(true)"))
+  theme    String?   @db.VarChar(1024)
+  name     String    @db.VarChar(512)
+  job      String?   @db.VarChar(512)
+  phone    String    @db.VarChar(512)
+  mail     String?   @db.VarChar(512)
+  comment  String?   @db.VarChar(512)
+  date     DateTime? @default(dbgenerated("(now())")) @db.Date
+}
+
+model news {
+  id          Int       @id @default(autoincrement())
+  activity    Boolean   @default(dbgenerated("(true)"))
+  sort        Int       @default(1000)
+  title       String    @db.VarChar(512)
+  description String?   @db.VarChar(2048)
+  source      String?   @db.VarChar(512)
+  link        String?   @db.VarChar(512)
+  date        DateTime? @db.Date
+}
+
+model options {
+  id    Int    @id @default(autoincrement())
+  name  String @unique(map: "name") @db.VarChar(512)
+  value String @db.VarChar(2048)
+}
+
+model optionspage {
+  id       Int     @id @default(autoincrement())
+  activity Boolean @default(dbgenerated("(true)"))
+  sort     Int     @default(1000)
+  name     String  @db.VarChar(512)
+  value    String  @db.VarChar(2048)
+  page     String  @db.VarChar(512)
+  pages    pages   @relation(fields: [page], references: [id], onDelete: Cascade, map: "optionspage_ibfk_1")
+
+  @@index([page], map: "page")
+}
+
+model pages {
+  id          String        @id @db.VarChar(512)
+  name        String        @db.VarChar(512)
+  optionspage optionspage[]
+}
+
+model partners {
+  id          Int     @id @default(autoincrement())
+  activity    Boolean @default(dbgenerated("(true)"))
+  sort        Int     @default(1000)
+  logo        String? @db.VarChar(512)
+  name        String  @db.VarChar(512)
+  description String? @db.VarChar(512)
+  link        String? @db.VarChar(512)
+}
+
+model programs {
+  id          Int     @id @default(autoincrement())
+  activity    Boolean @default(dbgenerated("(true)"))
+  sort        Int     @default(1000)
+  name        String  @db.VarChar(512)
+  description String  @db.VarChar(2048)
+  source      String? @db.VarChar(512)
+  link        String? @db.VarChar(512)
+}
