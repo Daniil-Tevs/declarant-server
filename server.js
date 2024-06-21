@@ -6,6 +6,7 @@ import morgan from 'morgan'
 import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 
 import appointmentRoute from './app/appointment/appointment.routes.js'
+import newsRoute from './app/news/news.routes.js'
 import optionsRoute from './app/options/options.routes.js'
 import pagesRoute from './app/pages/pages.routes.js'
 import partnersRoute from './app/partners/partners.routes.js'
@@ -23,6 +24,7 @@ async function main() {
 	app.use(cors())
 	app.use(express.json())
 
+	app.use('/api/news', newsRoute)
 	app.use('/api/page', pagesRoute)
 	app.use('/api/options', optionsRoute)
 	app.use('/api/programs', programsRoute)
