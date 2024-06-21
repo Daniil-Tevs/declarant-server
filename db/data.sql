@@ -1,5 +1,9 @@
 use declarant;
 
+# add option of site
+insert ignore into options (name, value)  
+values ('phone','+7 999 999 99-99'),('mail','info@declarant.com');
+
 # add pages
 insert ignore into pages (id, name)  
 values ('main','Главная'),('electronic-declaration','Электронное декларирование'),('programs','Программы'),
