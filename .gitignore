@@ -2,3 +2,4 @@ node_modules
 yarn.lock
 .env
 db/admin.sql
+/cache
