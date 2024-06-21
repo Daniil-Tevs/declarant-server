@@ -8,6 +8,7 @@ import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 import appointmentRoute from './app/appointment/appointment.routes.js'
 import optionsRoute from './app/options/options.routes.js'
 import pagesRoute from './app/pages/pages.routes.js'
+import partnersRoute from './app/partners/partners.routes.js'
 import { prisma } from './app/prisma.js'
 import programsRoute from './app/programs/programs.routes.js'
 
@@ -25,6 +26,7 @@ async function main() {
 	app.use('/api/page', pagesRoute)
 	app.use('/api/options', optionsRoute)
 	app.use('/api/programs', programsRoute)
+	app.use('/api/partners', partnersRoute)
 	app.use('/api/appointment', appointmentRoute)
 
 	app.use(notFound, errorHandler)
