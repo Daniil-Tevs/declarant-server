@@ -24,6 +24,7 @@
 	"homepage": "https://github.com/Daniil-Tevs/declarant-server#readme",
 	"dependencies": {
 		"@prisma/client": "^5.15.1",
+		"argon2": "^0.40.3",
 		"colors": "^1.4.0",
 		"cors": "^2.8.5",
 		"dotenv": "^16.4.5",
