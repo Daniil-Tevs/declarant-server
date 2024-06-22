@@ -31,7 +31,8 @@
 		"express": "^4.19.2",
 		"express-async-handler": "^1.2.0",
 		"fs": "^0.0.1-security",
-		"jsonwebtoken": "^9.0.2"
+		"jsonwebtoken": "^9.0.2",
+		"prisma": "^5.15.1"
 	},
 	"devDependencies": {
 		"morgan": "^1.10.0",
