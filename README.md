@@ -1,1 +1,1 @@
-# declarant-server
+# Server for declarant
